@@ -2,7 +2,7 @@
   "name": "restapi-best-books",
   "version": "1.0.0",
   "description": "CELearnig free restapi for use.",
-  "main": "index.ts",
+  "main": "app.ts",
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/CiganOliviu/restapi-best-books#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "mongoose": "^6.1.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
