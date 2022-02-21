@@ -1,2 +1,6 @@
 # restapi-best-books
-CELearnig free restapi for use.
+start app
+```
+node dist/app.js
+```
+
