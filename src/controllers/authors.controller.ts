@@ -9,11 +9,10 @@ export async function operateOverAuthorsController(request: Request, response: R
            } = request.body;
 
            const newAuthorEntry = await authorsModel.create({ first_name, last_name, age });
-
            return response.send(newAuthorEntry);
+
     } else if (request.method === 'GET') {
         const data = await authorsModel.find({});
-        
         return response.send(data);
     }
 
