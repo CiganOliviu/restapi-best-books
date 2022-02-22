@@ -1,11 +1,17 @@
-import express from 'express';
-const app = express();
-const port = 3000;
+import { configs } from './configs/configs';
+import bodyParser from 'body-parser';
+import setupDatabase from './configs/database';
+import { setRoutes } from './routes/routes';
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+configs.app.use(bodyParser.json());
 
-app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
+configs.app.listen(configs.port, () => {
+
+  console.log(`Express is listening at http://localhost:${configs.port}`);
+
+  setupDatabase().then(() => {
+    console.log('Database connected!');
+  });
+
+  setRoutes(configs.app);
 });
