@@ -14,40 +14,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.operateOverBooksController = void 0;
 const books_models_1 = __importDefault(require("../models/books.models"));
+const general_controllers_1 = require("../helpers/general.controllers");
 function operateOverBooksController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (request.method === 'POST') {
-            const { id, author, title, description, mark, cover, current_market_price, pages, category } = request.body;
-            const newBookEntry = yield books_models_1.default.create({
-                id, author, title, description,
-                mark, cover, current_market_price,
-                pages, category
-            });
-            return response.send(newBookEntry);
+        if ((0, general_controllers_1.isGetRequest)(request)) {
+            return (0, general_controllers_1.operateWithGetRequest)(response, books_models_1.default);
         }
-        if (request.method === 'GET') {
-            const data = yield books_models_1.default.find({});
-            return response.send(data);
+        if ((0, general_controllers_1.isPostRequest)(request)) {
+            const requestData = request.body;
+            return (0, general_controllers_1.operateWithPostRequest)(response, requestData, books_models_1.default);
         }
-        if (request.method === 'DELETE') {
-            const { id } = request.body;
-            const deleteEntry = yield books_models_1.default.deleteOne({ id: id });
-            return response.send(deleteEntry);
+        if ((0, general_controllers_1.isDeleteRequest)(request)) {
+            const requestId = request.body;
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, books_models_1.default);
         }
-        if (request.method === 'PUT') {
-            const { id, author, title, description, mark, cover, current_market_price, pages, category } = request.body;
-            const oldData = yield books_models_1.default.find({ id: id });
+        if ((0, general_controllers_1.isUpdateRequest)(request)) {
+            const requestData = request.body;
+            const oldData = yield books_models_1.default.find({ _id: requestData._id });
             const updatedData = {
-                author: author || oldData[0].author,
-                title: title || oldData[0].title,
-                description: description || oldData[0].description,
-                mark: mark || oldData[0].mark,
-                cover: cover || oldData[0].cover,
-                current_market_price: current_market_price || oldData[0].current_market_price,
-                pages: pages || oldData[0].pages,
-                category: category || oldData[0].category,
+                author: requestData.author || oldData[0].author,
+                title: requestData.title || oldData[0].title,
+                description: requestData.description || oldData[0].description,
+                mark: requestData.mark || oldData[0].mark,
+                cover: requestData.cover || oldData[0].cover,
+                current_market_price: requestData.current_market_price || oldData[0].current_market_price,
+                pages: requestData.pages || oldData[0].pages,
+                category: requestData.category || oldData[0].category,
             };
-            const updateEntry = yield books_models_1.default.findOneAndUpdate({ id: id }, updatedData);
+            const updateEntry = yield books_models_1.default.findOneAndUpdate({ _id: requestData._id }, updatedData);
             return response.send(updateEntry);
         }
         return response.sendStatus(404);

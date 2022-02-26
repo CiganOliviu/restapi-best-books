@@ -1,26 +1,28 @@
 import { Request, Response } from 'express';
 import booksModel from '../models/books.models';
-import { operateWithDeleteRequest, operateWithGetRequest, operateWithPostRequest } from './general.controllers';
+import { isDeleteRequest, isGetRequest, isPostRequest, 
+    isUpdateRequest, operateWithDeleteRequest, operateWithGetRequest, 
+    operateWithPostRequest } from '../helpers/general.controllers';
 
 export async function operateOverBooksController(request: Request, response: Response) {
 
-    if (request.method === 'GET') {
+    if (isGetRequest(request)) {
         return operateWithGetRequest(response, booksModel);
     }
     
-    if (request.method === 'POST') {
+    if (isPostRequest(request)) {
         const requestData = request.body;
 
         return operateWithPostRequest(response, requestData, booksModel);
     }
 
-    if (request.method === 'DELETE') {
+    if (isDeleteRequest(request)) {
         const requestId = request.body;
 
         return operateWithDeleteRequest(response, requestId, booksModel)
     }
 
-    if (request.method === 'PUT') {
+    if (isUpdateRequest(request)) {
         const requestData = request.body;
         const oldData = await booksModel.find({ _id: requestData._id });
         const updatedData = {

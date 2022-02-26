@@ -1,26 +1,26 @@
 import { Request, Response } from 'express';
 import authorsModel from '../models/authors.models';
-import { operateWithDeleteRequest, operateWithGetRequest, operateWithPostRequest, operateWithUpdateRequest } from './general.controllers';
+import { isDeleteRequest, isGetRequest, isPostRequest, isUpdateRequest, operateWithDeleteRequest, operateWithGetRequest, operateWithPostRequest, operateWithUpdateRequest } from '../helpers/general.controllers';
 
 export async function operateOverAuthorsController(request: Request, response: Response) {
 
-    if (request.method === 'GET') {
+    if (isGetRequest(request)) {
         return operateWithGetRequest(response, authorsModel);
     }
 
-    if (request.method === 'POST') {
+    if (isPostRequest(request)) {
         const requestData = request.body;
         
         return operateWithPostRequest(response, requestData, authorsModel);
     } 
 
-    if (request.method === 'DELETE') {
+    if (isDeleteRequest(request)) {
         const requestId = request.body;
 
         return operateWithDeleteRequest(response, requestId, authorsModel);
     } 
     
-    if (request.method === 'PUT') {
+    if (isUpdateRequest(request)) {
         const requestData = request.body;
         const oldData = await authorsModel.find({ _id: requestData._id });   
         const updatedData = {
