@@ -2,7 +2,8 @@ import { Request, Response } from 'express';
 import booksModel from '../models/books.models';
 import { isDeleteRequest, isGetRequest, isPostRequest, 
     isUpdateRequest, operateWithDeleteRequest, operateWithGetRequest, 
-    operateWithPostRequest } from '../helpers/general.controllers';
+    operateWithPostRequest, 
+    operateWithUpdateRequest} from '../helpers/general.controllers';
 
 export async function operateOverBooksController(request: Request, response: Response) {
 
@@ -36,9 +37,7 @@ export async function operateOverBooksController(request: Request, response: Res
             category: requestData.category || oldData[0].category,
         }
 
-        const updateEntry = await booksModel.findOneAndUpdate({ _id: requestData._id}, updatedData);
-
-        return response.send(updateEntry);
+        return operateWithUpdateRequest(response, requestData, updatedData, booksModel);
     }
 
     return response.sendStatus(404);

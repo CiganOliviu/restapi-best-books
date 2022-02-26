@@ -12,7 +12,7 @@ export interface BooksModel extends Document {
     category: string;
 }
 
-const schema = new  mongoose.Schema({
+const schema = new mongoose.Schema({
     author: [
         { type: Schema.Types.ObjectId, ref: 'authorsModel' }
     ],
