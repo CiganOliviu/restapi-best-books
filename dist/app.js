@@ -7,6 +7,7 @@ const configs_1 = require("./configs/configs");
 const body_parser_1 = __importDefault(require("body-parser"));
 const database_1 = __importDefault(require("./configs/database"));
 const routes_1 = require("./routes/routes");
+configs_1.configs.app.use(body_parser_1.default.urlencoded({ extended: false }));
 configs_1.configs.app.use(body_parser_1.default.json());
 configs_1.configs.app.listen(configs_1.configs.port, () => {
     console.log(`Express is listening at http://localhost:${configs_1.configs.port}`);

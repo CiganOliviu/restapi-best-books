@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import setupDatabase from './configs/database';
 import { setRoutes } from './routes/routes';
 
+configs.app.use(bodyParser.urlencoded({ extended: false }))
 configs.app.use(bodyParser.json());
 
 configs.app.listen(configs.port, () => {

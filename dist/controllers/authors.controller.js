@@ -30,6 +30,23 @@ function operateOverAuthorsController(request, response) {
             const deleteEntry = yield authors_models_1.default.deleteOne({ id: id });
             return response.send(deleteEntry);
         }
+        else if (request.method === 'PUT') {
+            const { id, profile_picture, first_name, last_name, age, nationality, occupation, website } = request.body;
+            const oldData = yield authors_models_1.default.find({ id: id });
+            const updatedData = {
+                profile_picture: profile_picture || oldData[0].profile_picture,
+                first_name: first_name || oldData[0].first_name,
+                last_name: last_name || oldData[0].last_name,
+                age: age || oldData[0].age,
+                nationality: nationality || oldData[0].nationality,
+                occupation: occupation || oldData[0].occupation,
+                website: website || oldData[0].website,
+            };
+            console.log(updatedData);
+            const updateEntry = yield authors_models_1.default.findOneAndUpdate({ id: id }, updatedData);
+            console.log(updateEntry);
+            return response.send(updateEntry);
+        }
         return response.sendStatus(404);
     });
 }
