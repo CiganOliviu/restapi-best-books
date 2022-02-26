@@ -5,10 +5,11 @@ export async function operateOverAuthorsController(request: Request, response: R
 
     if (request.method === 'POST') {
            const {
-               first_name, last_name, age
+               profile_picture, first_name, last_name, 
+               age, nationality, occupation, website
            } = request.body;
 
-           const newAuthorEntry = await authorsModel.create({ first_name, last_name, age });
+           const newAuthorEntry = await authorsModel.create({ profile_picture, first_name, last_name, age, nationality, occupation, website });
            return response.send(newAuthorEntry);
 
     } else if (request.method === 'GET') {

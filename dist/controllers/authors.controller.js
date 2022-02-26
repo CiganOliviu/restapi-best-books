@@ -17,8 +17,8 @@ const authors_models_1 = __importDefault(require("../models/authors.models"));
 function operateOverAuthorsController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
         if (request.method === 'POST') {
-            const { first_name, last_name, age } = request.body;
-            const newAuthorEntry = yield authors_models_1.default.create({ first_name, last_name, age });
+            const { profile_picture, first_name, last_name, age, nationality, occupation, website } = request.body;
+            const newAuthorEntry = yield authors_models_1.default.create({ profile_picture, first_name, last_name, age, nationality, occupation, website });
             return response.send(newAuthorEntry);
         }
         else if (request.method === 'GET') {
