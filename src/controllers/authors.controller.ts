@@ -15,6 +15,12 @@ export async function operateOverAuthorsController(request: Request, response: R
     } else if (request.method === 'GET') {
         const data = await authorsModel.find({});
         return response.send(data);
+
+    } else if (request.method === 'DELETE') {
+        const { id } = request.body;
+        const deleteEntry = await authorsModel.deleteOne({ id: id });
+
+        return response.send(deleteEntry);
     }
 
     return response.sendStatus(404);

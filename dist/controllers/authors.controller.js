@@ -25,6 +25,11 @@ function operateOverAuthorsController(request, response) {
             const data = yield authors_models_1.default.find({});
             return response.send(data);
         }
+        else if (request.method === 'DELETE') {
+            const { id } = request.body;
+            const deleteEntry = yield authors_models_1.default.deleteOne({ id: id });
+            return response.send(deleteEntry);
+        }
         return response.sendStatus(404);
     });
 }
