@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const schema = new mongoose_1.default.Schema({
-    id: Number,
     profile_picture: { type: String, required: false, unique: true },
     first_name: { type: String, required: true, unique: false },
     last_name: { type: String, requred: true, unique: false },

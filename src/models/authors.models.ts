@@ -1,7 +1,6 @@
 import mongoose, { Document } from 'mongoose';
 
 export interface AuthorsModel extends Document {
-    id: number;
     profile_picture: string;
     first_name: string;
     last_name: string;
@@ -12,7 +11,6 @@ export interface AuthorsModel extends Document {
 }
 
 const schema = new mongoose.Schema({
-    id: Number,
     profile_picture: { type: String, required: false, unique: true },
     first_name: { type: String, required: true, unique: false },
     last_name: { type:String, requred: true, unique: false },

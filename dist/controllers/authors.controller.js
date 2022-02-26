@@ -14,38 +14,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.operateOverAuthorsController = void 0;
 const authors_models_1 = __importDefault(require("../models/authors.models"));
+const general_controllers_1 = require("./general.controllers");
 function operateOverAuthorsController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (request.method === 'GET') {
+            return (0, general_controllers_1.operateWithGetRequest)(response, authors_models_1.default);
+        }
         if (request.method === 'POST') {
-            const { profile_picture, first_name, last_name, age, nationality, occupation, website } = request.body;
-            const newAuthorEntry = yield authors_models_1.default.create({ profile_picture, first_name, last_name, age, nationality, occupation, website });
-            return response.send(newAuthorEntry);
+            const requestData = request.body;
+            return (0, general_controllers_1.operateWithPostRequest)(response, requestData, authors_models_1.default);
         }
-        else if (request.method === 'GET') {
-            const data = yield authors_models_1.default.find({});
-            return response.send(data);
+        if (request.method === 'DELETE') {
+            const requestId = request.body;
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, authors_models_1.default);
         }
-        else if (request.method === 'DELETE') {
-            const { id } = request.body;
-            const deleteEntry = yield authors_models_1.default.deleteOne({ id: id });
-            return response.send(deleteEntry);
-        }
-        else if (request.method === 'PUT') {
-            const { id, profile_picture, first_name, last_name, age, nationality, occupation, website } = request.body;
-            const oldData = yield authors_models_1.default.find({ id: id });
+        if (request.method === 'PUT') {
+            const requestData = request.body;
+            const oldData = yield authors_models_1.default.find({ _id: requestData._id });
+            console.log(oldData);
             const updatedData = {
-                profile_picture: profile_picture || oldData[0].profile_picture,
-                first_name: first_name || oldData[0].first_name,
-                last_name: last_name || oldData[0].last_name,
-                age: age || oldData[0].age,
-                nationality: nationality || oldData[0].nationality,
-                occupation: occupation || oldData[0].occupation,
-                website: website || oldData[0].website,
+                profile_picture: requestData.profile_picture || oldData[0].profile_picture,
+                first_name: requestData.first_name || oldData[0].first_name,
+                last_name: requestData.last_name || oldData[0].last_name,
+                age: requestData.age || oldData[0].age,
+                nationality: requestData.nationality || oldData[0].nationality,
+                occupation: requestData.occupation || oldData[0].occupation,
+                website: requestData.website || oldData[0].website,
             };
-            console.log(updatedData);
-            const updateEntry = yield authors_models_1.default.findOneAndUpdate({ id: id }, updatedData);
-            console.log(updateEntry);
-            return response.send(updateEntry);
+            return (0, general_controllers_1.operateWithUpdateRequest)(response, requestData, updatedData, authors_models_1.default);
         }
         return response.sendStatus(404);
     });
