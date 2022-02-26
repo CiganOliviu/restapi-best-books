@@ -2,6 +2,6 @@
 
 Start app
 ```
-node dist/app.js
+npm start
 ```
 
