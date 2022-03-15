@@ -5,33 +5,35 @@ import { AuthorsModel } from "../models/authors.models";
 import { BooksModel } from "../models/books.models";
 import { CategoriesModel } from "../models/categories.models";
 
+type generalModel = AuthorsModel | BooksModel | CategoriesModel;
+
 export async function operateWithGetRequest(response: Response, 
-    model: mongoose.Model<AuthorsModel | BooksModel | CategoriesModel>): Promise<Response> {
+    model: mongoose.Model<generalModel>): Promise<Response> {
    
     const data = await model.find({})
     return response.send(data);
 }
 
 export async function operateWithPostRequest(response: Response, 
-    objectFields: AuthorsModel | BooksModel | CategoriesModel, 
-    model: mongoose.Model<AuthorsModel | BooksModel | CategoriesModel>): Promise<Response> {
+    objectFields: generalModel, 
+    model: mongoose.Model<generalModel>): Promise<Response> {
 
     const newEntry = await model.create(objectFields);
     return response.send(newEntry);
 }
 
 export async function operateWithDeleteRequest(response: Response, 
-    objectId: AuthorsModel | BooksModel | CategoriesModel, 
-    model: mongoose.Model<AuthorsModel | BooksModel | CategoriesModel>): Promise<Response> {
+    objectId: generalModel, 
+    model: mongoose.Model<generalModel>): Promise<Response> {
 
     const deleteEntry = await model.deleteOne({ _id: objectId._id });
     return response.send(deleteEntry);
 }
 
 export async function operateWithUpdateRequest(response: Response, 
-    objectsFields: AuthorsModel | BooksModel | CategoriesModel, 
-    updatedData: mongoose.UpdateQuery<AuthorsModel | BooksModel | CategoriesModel>, 
-    model: mongoose.Model<AuthorsModel | BooksModel | CategoriesModel>): Promise<Response> {
+    objectsFields: generalModel, 
+    updatedData: mongoose.UpdateQuery<generalModel>, 
+    model: mongoose.Model<generalModel>): Promise<Response> {
 
     const updateEntry = await model.findOneAndUpdate({ _id: objectsFields._id }, updatedData);
     return response.send(updateEntry);
