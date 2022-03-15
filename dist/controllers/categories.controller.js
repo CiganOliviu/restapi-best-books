@@ -12,39 +12,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.operateOverBooksController = void 0;
-const books_models_1 = __importDefault(require("../models/books.models"));
+exports.operateOverCategoriesController = void 0;
 const general_controllers_1 = require("../helpers/general.controllers");
-function operateOverBooksController(request, response) {
+const categories_models_1 = __importDefault(require("../models/categories.models"));
+function operateOverCategoriesController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
         if ((0, general_controllers_1.isGetRequest)(request)) {
-            return (0, general_controllers_1.operateWithGetRequest)(response, books_models_1.default);
+            return (0, general_controllers_1.operateWithGetRequest)(response, categories_models_1.default);
         }
         if ((0, general_controllers_1.isPostRequest)(request)) {
             const requestData = request.body;
-            return (0, general_controllers_1.operateWithPostRequest)(response, requestData, books_models_1.default);
+            return (0, general_controllers_1.operateWithPostRequest)(response, requestData, categories_models_1.default);
         }
         if ((0, general_controllers_1.isDeleteRequest)(request)) {
             const requestId = request.body;
-            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, books_models_1.default);
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, categories_models_1.default);
         }
         if ((0, general_controllers_1.isUpdateRequest)(request)) {
             const requestData = request.body;
-            const oldData = yield books_models_1.default.find({ _id: requestData._id });
+            const oldData = yield categories_models_1.default.find({ _id: requestData._id });
             const updatedData = {
-                author: requestData.author || oldData[0].author,
-                title: requestData.title || oldData[0].title,
-                description: requestData.description || oldData[0].description,
-                mark: requestData.mark || oldData[0].mark,
-                cover: requestData.cover || oldData[0].cover,
-                current_market_price: requestData.current_market_price || oldData[0].current_market_price,
-                pages: requestData.pages || oldData[0].pages,
-                category: requestData.category || oldData[0].category,
+                name: requestData.name || oldData[0].name,
             };
-            return (0, general_controllers_1.operateWithUpdateRequest)(response, requestData, updatedData, books_models_1.default);
+            return (0, general_controllers_1.operateWithUpdateRequest)(response, requestData, updatedData, categories_models_1.default);
         }
         return response.sendStatus(404);
     });
 }
-exports.operateOverBooksController = operateOverBooksController;
-//# sourceMappingURL=books.controller.js.map
+exports.operateOverCategoriesController = operateOverCategoriesController;
+//# sourceMappingURL=categories.controller.js.map
