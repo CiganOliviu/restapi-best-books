@@ -10,13 +10,11 @@ export async function operateOverAuthorsController(request: Request, response: R
 
     if (isPostRequest(request)) {
         const requestData = request.body;
-        
         return operateWithPostRequest(response, requestData, authorsModel);
     } 
 
     if (isDeleteRequest(request)) {
         const requestId = request.body;
-
         return operateWithDeleteRequest(response, requestId, authorsModel);
     } 
     
