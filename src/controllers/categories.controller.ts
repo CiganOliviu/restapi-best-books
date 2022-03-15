@@ -10,13 +10,11 @@ export async function operateOverCategoriesController(request: Request, response
 
     if (isPostRequest(request)) {
         const requestData = request.body;
-
         return operateWithPostRequest(response, requestData, categoriesModel);
     }
 
     if (isDeleteRequest(request)) {
         const requestId = request.body;
-
         return operateWithDeleteRequest(response, requestId, categoriesModel);
     }
 

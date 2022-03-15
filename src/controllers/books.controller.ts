@@ -13,13 +13,11 @@ export async function operateOverBooksController(request: Request, response: Res
     
     if (isPostRequest(request)) {
         const requestData = request.body;
-
         return operateWithPostRequest(response, requestData, booksModel);
     }
 
     if (isDeleteRequest(request)) {
         const requestId = request.body;
-
         return operateWithDeleteRequest(response, requestId, booksModel)
     }
 
