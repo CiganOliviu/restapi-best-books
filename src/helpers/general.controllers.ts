@@ -39,6 +39,12 @@ export async function operateWithUpdateRequest(response: Response,
     return response.send(updateEntry);
 }
 
+export async function getInstanceById(request: Request, response: Response, model: mongoose.Model<generalModel>) {
+    const data = await model.findById(request.params.id);
+    
+    return response.send(data);
+}
+
 export function isGetRequest(request: Request): boolean {
     return request.method === requestMethods.GET;
 }

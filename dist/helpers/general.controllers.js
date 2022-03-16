@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isUpdateRequest = exports.isDeleteRequest = exports.isPostRequest = exports.isGetRequest = exports.operateWithUpdateRequest = exports.operateWithDeleteRequest = exports.operateWithPostRequest = exports.operateWithGetRequest = void 0;
+exports.isUpdateRequest = exports.isDeleteRequest = exports.isPostRequest = exports.isGetRequest = exports.getInstanceById = exports.operateWithUpdateRequest = exports.operateWithDeleteRequest = exports.operateWithPostRequest = exports.operateWithGetRequest = void 0;
 const configs_1 = require("../configs/configs");
 function operateWithGetRequest(response, model) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -39,6 +39,13 @@ function operateWithUpdateRequest(response, objectsFields, updatedData, model) {
     });
 }
 exports.operateWithUpdateRequest = operateWithUpdateRequest;
+function getInstanceById(request, response, model) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield model.findById(request.params.id);
+        return response.send(data);
+    });
+}
+exports.getInstanceById = getInstanceById;
 function isGetRequest(request) {
     return request.method === configs_1.requestMethods.GET;
 }
