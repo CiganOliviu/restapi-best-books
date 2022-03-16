@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import authorsModel from '../models/authors.models';
-import { isDeleteRequest, isGetRequest, isPostRequest, isUpdateRequest, operateWithDeleteRequest, operateWithGetRequest, operateWithPostRequest, operateWithUpdateRequest } from '../helpers/general.controllers';
+import { isDeleteRequest, isGetRequest, isPostRequest, 
+    isUpdateRequest, operateWithDeleteRequest, operateWithGetRequest, 
+    operateWithPostRequest, operateWithUpdateRequest } from '../helpers/general.controllers';
 
 export async function operateOverAuthorsController(request: Request, response: Response) {
 

@@ -3,7 +3,7 @@ import booksModel from '../models/books.models';
 import { isDeleteRequest, isGetRequest, isPostRequest, 
     isUpdateRequest, operateWithDeleteRequest, operateWithGetRequest, 
     operateWithPostRequest, 
-    operateWithUpdateRequest} from '../helpers/general.controllers';
+    operateWithUpdateRequest } from '../helpers/general.controllers';
 
 export async function operateOverBooksController(request: Request, response: Response) {
 

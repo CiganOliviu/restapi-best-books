@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
-import { isUpdateRequest, isDeleteRequest, isGetRequest, isPostRequest, operateWithDeleteRequest, operateWithGetRequest, operateWithPostRequest, operateWithUpdateRequest } from '../helpers/general.controllers';
+import { isUpdateRequest, isDeleteRequest, 
+    isGetRequest, isPostRequest, operateWithDeleteRequest, 
+    operateWithGetRequest, operateWithPostRequest, operateWithUpdateRequest } from '../helpers/general.controllers';
 import categoriesModel from '../models/categories.models';
 
 export async function operateOverCategoriesController(request: Request, response: Response) {
