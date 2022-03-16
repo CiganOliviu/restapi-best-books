@@ -7,6 +7,11 @@ exports.requestMethods = exports.configs = void 0;
 const express_1 = __importDefault(require("express"));
 exports.configs = {
     app: (0, express_1.default)(),
+    cors: require('cors'),
+    corsOptions: {
+        origin: [''],
+        optionsSuccessStatus: 200
+    },
     port: 8080,
     host: 'localhost',
     dbUrl: 'mongodb://localhost:27017/books',
