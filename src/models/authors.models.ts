@@ -1,12 +1,12 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { NationalityModel } from './nationality.models';
+import { NationalitiesModel } from './nationalities.models';
 
 export interface AuthorsModel extends Document {
     profile_picture: string;
     first_name: string;
     last_name: string;
     age: number;
-    nationality: NationalityModel;
+    nationality: NationalitiesModel;
     occupation: string;
     website: string;
 }
