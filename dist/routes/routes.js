@@ -7,6 +7,8 @@ const book_controller_1 = require("../controllers/book.controller");
 const books_controller_1 = require("../controllers/books.controller");
 const categories_controller_1 = require("../controllers/categories.controller");
 const category_controller_1 = require("../controllers/category.controller");
+const nationalities_controller_1 = require("../controllers/nationalities.controller");
+const nationality_controller_1 = require("../controllers/nationality.controller");
 function setRoutes(app, cors) {
     app.use(cors(configs_1.configs.corsOptions));
     app.use('/categories/:id', category_controller_1.getCategoryController);
@@ -15,6 +17,8 @@ function setRoutes(app, cors) {
     app.use('/authors', authors_controller_1.operateOverAuthorsController);
     app.use('/books/:id', book_controller_1.getBookController);
     app.use('/books', books_controller_1.operateOverBooksController);
+    app.use('/nationalities/:id', nationality_controller_1.getNationalityController);
+    app.use('/nationalities', nationalities_controller_1.operateOverNationalitiesController);
 }
 exports.default = setRoutes;
 //# sourceMappingURL=routes.js.map

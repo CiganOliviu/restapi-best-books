@@ -6,8 +6,10 @@ import { getBookController } from '../controllers/book.controller';
 import { operateOverBooksController } from '../controllers/books.controller';
 import { operateOverCategoriesController } from '../controllers/categories.controller';
 import { getCategoryController } from '../controllers/category.controller';
+import { operateOverNationalitiesController } from '../controllers/nationalities.controller';
+import { getNationalityController } from '../controllers/nationality.controller';
 
-export default function setRoutes(app: Express, cors: (corsOptions: object) => any) {
+export default function setRoutes(app: Express, cors: (corsOptions: object) => never) {
 
     app.use(cors(configs.corsOptions));
     app.use('/categories/:id', getCategoryController);
@@ -16,4 +18,6 @@ export default function setRoutes(app: Express, cors: (corsOptions: object) => a
     app.use('/authors', operateOverAuthorsController);
     app.use('/books/:id', getBookController);
     app.use('/books', operateOverBooksController);
+    app.use('/nationalities/:id', getNationalityController);
+    app.use('/nationalities', operateOverNationalitiesController);
 }
