@@ -40,8 +40,8 @@ export async function operateWithUpdateRequest(response: Response,
 }
 
 export async function getInstanceById(request: Request, response: Response, model: mongoose.Model<generalModel>) {
-    const data = await model.findById(request.params.id);
     
+    const data = await model.findById(request.params.id);
     return response.send(data);
 }
 

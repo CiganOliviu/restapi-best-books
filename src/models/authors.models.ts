@@ -1,11 +1,12 @@
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
+import { NationalityModel } from './nationality.models';
 
 export interface AuthorsModel extends Document {
     profile_picture: string;
     first_name: string;
     last_name: string;
     age: number;
-    nationality: string;
+    nationality: NationalityModel;
     occupation: string;
     website: string;
 }
@@ -15,7 +16,9 @@ const schema = new mongoose.Schema({
     first_name: { type: String, required: true, unique: false },
     last_name: { type:String, requred: true, unique: false },
     age: { type: Number, required: false, unique: false },
-    nationality: { type: String, required: true, unique: false },
+    nationality: [
+        { type: Schema.Types.ObjectId, ref: 'nationalityModel' }
+    ],
     occupation: { type: String, required: true, unique: false },
     website: { type: String, required: false, unique: true }
 });
