@@ -15,6 +15,6 @@ const schema = new mongoose.Schema({
     ]
 })
 
-const appLayoutModel = mongoose.model<AppLayoutModel>('appLayoutMOdel', schema);
+const appLayoutModel = mongoose.model<AppLayoutModel>('appLayoutModel', schema);
 
 export default appLayoutModel;
