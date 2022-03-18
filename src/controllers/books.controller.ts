@@ -33,6 +33,7 @@ export async function operateOverBooksController(request: Request, response: Res
             current_market_price: requestData.current_market_price || oldData[0].current_market_price,
             pages: requestData.pages || oldData[0].pages,
             category: requestData.category || oldData[0].category,
+            owned: requestData.owned || oldData[0].owned,
         }
 
         return operateWithUpdateRequest(response, requestData, updatedData, booksModel);

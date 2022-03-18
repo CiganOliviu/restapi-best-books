@@ -10,6 +10,7 @@ export interface BooksModel extends Document {
     current_market_price: number;
     pages: number;
     category: string;
+    owned: boolean;
 }
 
 const schema = new mongoose.Schema({
@@ -24,6 +25,7 @@ const schema = new mongoose.Schema({
     current_market_price: { type: Number, required: false, unique: false },
     pages: { type: Number, required: false, unique: false },
     category: { type: String, required: true, unique: false },
+    owned: { type: Number, required: true, unique: false }
 })
 
 const booksModel = mongoose.model<BooksModel>('booksModel', schema);
