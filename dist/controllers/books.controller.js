@@ -40,6 +40,7 @@ function operateOverBooksController(request, response) {
                 current_market_price: requestData.current_market_price || oldData[0].current_market_price,
                 pages: requestData.pages || oldData[0].pages,
                 category: requestData.category || oldData[0].category,
+                owned: requestData.owned || oldData[0].owned,
             };
             return (0, general_controllers_1.operateWithUpdateRequest)(response, requestData, updatedData, books_models_1.default);
         }

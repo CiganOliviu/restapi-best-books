@@ -31,6 +31,7 @@ const schema = new mongoose_1.default.Schema({
     current_market_price: { type: Number, required: false, unique: false },
     pages: { type: Number, required: false, unique: false },
     category: { type: String, required: true, unique: false },
+    owned: { type: Number, required: true, unique: false }
 });
 const booksModel = mongoose_1.default.model('booksModel', schema);
 exports.default = booksModel;
