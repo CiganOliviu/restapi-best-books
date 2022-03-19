@@ -9,6 +9,8 @@ const categories_controller_1 = require("../controllers/categories.controller");
 const category_controller_1 = require("../controllers/category.controller");
 const nationalities_controller_1 = require("../controllers/nationalities.controller");
 const nationality_controller_1 = require("../controllers/nationality.controller");
+const schemas_controller_1 = require("../controllers/schemas.controller");
+const style_components_controller_1 = require("../controllers/style_components.controller");
 function setRoutes(app, cors) {
     app.use(cors(configs_1.configs.corsOptions));
     app.use('/categories/:id', category_controller_1.getCategoryController);
@@ -19,6 +21,8 @@ function setRoutes(app, cors) {
     app.use('/books', books_controller_1.operateOverBooksController);
     app.use('/nationalities/:id', nationality_controller_1.getNationalityController);
     app.use('/nationalities', nationalities_controller_1.operateOverNationalitiesController);
+    app.use('/schemas', schemas_controller_1.operateOverSchemasController);
+    app.use('/style-components', style_components_controller_1.operateOverStyledComponentsController);
 }
 exports.default = setRoutes;
 //# sourceMappingURL=routes.js.map

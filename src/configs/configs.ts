@@ -1,4 +1,12 @@
 import express from "express";
+import { AuthorsModel } from "../models/authors.models";
+import { BooksModel } from "../models/books.models";
+import { CategoriesModel } from "../models/categories.models";
+import { NationalitiesModel } from "../models/nationalities.models";
+import { StyleComponentsModel } from "../models/style_components.models";
+
+export type generalModel = AuthorsModel | BooksModel | CategoriesModel | NationalitiesModel
+| StyleComponentsModel;
 
 export const configs = {
     app: express(),

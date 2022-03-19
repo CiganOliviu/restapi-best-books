@@ -1,14 +1,6 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-import { requestMethods } from "../configs/configs";
-import { AuthorsModel } from "../models/authors.models";
-import { BooksModel } from "../models/books.models";
-import { CategoriesModel } from "../models/categories.models";
-import { NationalitiesModel } from "../models/nationalities.models";
-import { StyleComponentsModel } from "../models/style_components.models";
-
-type generalModel = AuthorsModel | BooksModel | CategoriesModel | NationalitiesModel
-| StyleComponentsModel;
+import { generalModel, requestMethods } from "../configs/configs";
 
 export async function operateWithGetRequest(response: Response, 
     model: mongoose.Model<generalModel>): Promise<Response> {
