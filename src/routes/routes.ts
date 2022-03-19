@@ -8,6 +8,8 @@ import { operateOverCategoriesController } from '../controllers/categories.contr
 import { getCategoryController } from '../controllers/category.controller';
 import { operateOverNationalitiesController } from '../controllers/nationalities.controller';
 import { getNationalityController } from '../controllers/nationality.controller';
+import { operateOverSchemasController } from '../controllers/schemas.controller';
+import { operateOverStyledComponentsController } from '../controllers/style_components.controller';
 
 export default function setRoutes(app: Express, cors: (corsOptions: object) => never) {
 
@@ -20,4 +22,6 @@ export default function setRoutes(app: Express, cors: (corsOptions: object) => n
     app.use('/books', operateOverBooksController);
     app.use('/nationalities/:id', getNationalityController);
     app.use('/nationalities', operateOverNationalitiesController);
+    app.use('/schemas', operateOverSchemasController);
+    app.use('/style-components', operateOverStyledComponentsController);
 }
