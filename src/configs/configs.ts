@@ -1,12 +1,14 @@
 import express from "express";
+import { AppLayoutModel } from "../models/app_layout.models";
 import { AuthorsModel } from "../models/authors.models";
 import { BooksModel } from "../models/books.models";
 import { CategoriesModel } from "../models/categories.models";
 import { NationalitiesModel } from "../models/nationalities.models";
+import { SchemasModel } from "../models/schemas.models";
 import { StyleComponentsModel } from "../models/style_components.models";
 
 export type generalModel = AuthorsModel | BooksModel | CategoriesModel | NationalitiesModel
-| StyleComponentsModel;
+| StyleComponentsModel | SchemasModel | AppLayoutModel;
 
 export const configs = {
     app: express(),
