@@ -14,7 +14,7 @@ export const configs = {
     app: express(),
     cors: require('cors'),
     corsOptions: {
-        origin: [''],
+        origin: ['http://localhost:3000'],
         optionsSuccessStatus: 200
     },
     port: 8080 as number,

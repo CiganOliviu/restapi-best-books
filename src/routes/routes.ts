@@ -1,5 +1,6 @@
 import { Express } from 'express'; 
 import { configs } from '../configs/configs';
+import { operateOverAppLayoutController } from '../controllers/app_layout.controller';
 import { getAuthorController } from '../controllers/author.controller';
 import { operateOverAuthorsController } from '../controllers/authors.controller';
 import { getBookController } from '../controllers/book.controller';
@@ -24,4 +25,5 @@ export default function setRoutes(app: Express, cors: (corsOptions: object) => n
     app.use('/nationalities', operateOverNationalitiesController);
     app.use('/schemas', operateOverSchemasController);
     app.use('/style-components', operateOverStyledComponentsController);
+    app.use('/app-layout', operateOverAppLayoutController);
 }

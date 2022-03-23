@@ -9,7 +9,7 @@ exports.configs = {
     app: (0, express_1.default)(),
     cors: require('cors'),
     corsOptions: {
-        origin: [''],
+        origin: ['http://localhost:3000'],
         optionsSuccessStatus: 200
     },
     port: 8080,

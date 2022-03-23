@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const configs_1 = require("../configs/configs");
+const app_layout_controller_1 = require("../controllers/app_layout.controller");
 const author_controller_1 = require("../controllers/author.controller");
 const authors_controller_1 = require("../controllers/authors.controller");
 const book_controller_1 = require("../controllers/book.controller");
@@ -23,6 +24,7 @@ function setRoutes(app, cors) {
     app.use('/nationalities', nationalities_controller_1.operateOverNationalitiesController);
     app.use('/schemas', schemas_controller_1.operateOverSchemasController);
     app.use('/style-components', style_components_controller_1.operateOverStyledComponentsController);
+    app.use('/app-layout', app_layout_controller_1.operateOverAppLayoutController);
 }
 exports.default = setRoutes;
 //# sourceMappingURL=routes.js.map
