@@ -13,7 +13,6 @@ import { operateOverSchemasController } from '../controllers/schemas.controller'
 import { operateOverStyledComponentsController } from '../controllers/style_components.controller';
 
 export default function setRoutes(app: Express, cors: (corsOptions: object) => never) {
-
     app.use(cors(configs.corsOptions));
     app.use('/categories/:id', getCategoryController);
     app.use('/categories', operateOverCategoriesController);

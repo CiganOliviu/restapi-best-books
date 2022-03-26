@@ -32,6 +32,7 @@ function operateOverAppLayoutController(request, response) {
             const requestData = request.body;
             const oldData = yield app_layout_models_1.default.find({ _id: requestData._id });
             const updatedData = {
+                layout_title_id: requestData.layout_title_id || oldData[0].layout_title_id,
                 target_page: requestData.target_page || oldData[0].target_page,
                 style: requestData.style || oldData[0].style,
             };
