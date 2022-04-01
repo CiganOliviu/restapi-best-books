@@ -12,7 +12,7 @@ export interface AuthorsModel extends Document {
 }
 
 const schema = new mongoose.Schema({
-    profile_picture: { type: String, required: false, unique: true },
+    profile_picture: { type: String, required: false, unique: false },
     first_name: { type: String, required: true, unique: false },
     last_name: { type:String, requred: true, unique: false },
     age: { type: Number, required: false, unique: false },
@@ -20,7 +20,7 @@ const schema = new mongoose.Schema({
         { type: Schema.Types.ObjectId, ref: 'nationalityModel' }
     ],
     occupation: { type: String, required: true, unique: false },
-    website: { type: String, required: false, unique: true }
+    website: { type: String, required: false, unique: false }
 });
 
 const authorsModel = mongoose.model<AuthorsModel>('authorsModel', schema);

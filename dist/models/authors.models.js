@@ -21,7 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const schema = new mongoose_1.default.Schema({
-    profile_picture: { type: String, required: false, unique: true },
+    profile_picture: { type: String, required: false, unique: false },
     first_name: { type: String, required: true, unique: false },
     last_name: { type: String, requred: true, unique: false },
     age: { type: Number, required: false, unique: false },
@@ -29,7 +29,7 @@ const schema = new mongoose_1.default.Schema({
         { type: mongoose_1.Schema.Types.ObjectId, ref: 'nationalityModel' }
     ],
     occupation: { type: String, required: true, unique: false },
-    website: { type: String, required: false, unique: true }
+    website: { type: String, required: false, unique: false }
 });
 const authorsModel = mongoose_1.default.model('authorsModel', schema);
 exports.default = authorsModel;

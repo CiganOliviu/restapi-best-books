@@ -6,8 +6,8 @@ export interface SchemasModel extends Document {
 }
 
 const schema = new mongoose.Schema({
-    name: { type: String, required: true, unique: true },
-    route: { type: String, required: true, unique: true },
+    name: { type: String, required: true, unique: false },
+    route: { type: String, required: true, unique: false },
 })
 
 const schemaModel = mongoose.model<SchemasModel>('schemasModel', schema);

@@ -22,7 +22,7 @@ const schema = new mongoose.Schema({
     title: { type: String, required: true, unique: false },
     description: { type: String, required: true, unique: false },
     mark: { type: Number, required: false, unique: false },
-    cover: { type: String, required: true, unique: true },
+    cover: { type: String, required: true, unique: false },
     current_market_price: { type: Number, required: false, unique: false },
     pages: { type: Number, required: false, unique: false },
     category: [

@@ -5,7 +5,7 @@ export interface NationalitiesModel extends Document {
 }
 
 const schema = new mongoose.Schema({
-    name: { type: String, required: true, unique: true }
+    name: { type: String, required: true, unique: false }
 })
 
 const nationalitiesModel = mongoose.model<NationalitiesModel>('nationalitiesModel', schema);

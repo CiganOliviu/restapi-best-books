@@ -5,7 +5,7 @@ export interface CategoriesModel extends Document {
 }
 
 const schema = new mongoose.Schema({
-    name: { type: String, required: true, unique: true },
+    name: { type: String, required: true, unique: false },
 })
 
 const categoriesModel = mongoose.model<CategoriesModel>('categoriesModel', schema);

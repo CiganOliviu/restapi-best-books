@@ -1,16 +1,5 @@
 [
     {
-        "author": "621a1892ca534812fe594e98",
-        "title": "Clean Code",
-        "description": "About the book",
-        "mark": "10",
-        "cover": "MEDIA/books/clean_code.jpg",
-        "current_market_price": "300",
-        "pages": "320",
-        "category": "62468f14575cfa8149c3f961",
-        "owned": false
-    },
-    {
         "author": "621a64e6fc0d9f3683064ae0",
         "title": "Refactoring",
         "description": "About the book",
@@ -18,6 +7,17 @@
         "cover": "MEDIA/books/refactoring.jpg",
         "current_market_price": "233",
         "pages": "276",
+        "category": "62468f14575cfa8149c3f961",
+        "owned": false
+    },
+    {
+        "author": "621a1892ca534812fe594e98",
+        "title": "Clean Code",
+        "description": " the book",
+        "mark": "10",
+        "cover": "MEDIA/books/clean_code.jpg",
+        "current_market_price": "300",
+        "pages": "320",
         "category": "62468f14575cfa8149c3f961",
         "owned": false
     }
