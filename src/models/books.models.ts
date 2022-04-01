@@ -1,5 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 import { AuthorsModel } from "./authors.models";
+import { CategoriesModel } from "./categories.models";
 
 export interface BooksModel extends Document {
     author: AuthorsModel;
@@ -9,7 +10,7 @@ export interface BooksModel extends Document {
     cover: string;
     current_market_price: number;
     pages: number;
-    category: string;
+    category: CategoriesModel;
     owned: boolean;
 }
 
@@ -24,7 +25,9 @@ const schema = new mongoose.Schema({
     string: { type: String, required: true, unique: true },
     current_market_price: { type: Number, required: false, unique: false },
     pages: { type: Number, required: false, unique: false },
-    category: { type: String, required: true, unique: false },
+    category: [
+        { type: Schema.Types.ObjectId, ref: 'categoriesModel' }
+    ],
     owned: { type: Number, required: true, unique: false }
 })
 
