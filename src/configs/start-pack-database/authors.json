@@ -1,0 +1,20 @@
+[
+    {
+        "profile_picture": "MEDIA/bob_martin.jpg",
+        "first_name": "Bob",
+        "last_name": "Martin",
+        "age": "69",
+        "nationality": "623edcbdd40af40020c2a5cb",
+        "occupation": "Software Engineer",
+        "website": "cleancoder.com"
+    },
+    {
+        "profile_picture": "MEDIA/martin_fowler.jpg",
+        "first_name": "Martin",
+        "last_name": "Fowler",
+        "age": "58",
+        "nationality": "623edd3cd40af40020c2a5db",
+        "occupation": "Software Engineer",
+        "website": "martinfowler.com"
+    }
+]
