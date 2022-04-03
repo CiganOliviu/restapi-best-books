@@ -17,19 +17,17 @@ const general_controllers_1 = require("../helpers/general.controllers");
 const app_layout_models_1 = __importDefault(require("../models/app_layout.models"));
 function operateOverAppLayoutController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
+        const requestData = request.body;
         if ((0, general_controllers_1.isGetRequest)(request)) {
             return (0, general_controllers_1.operateWithGetRequest)(response, app_layout_models_1.default);
         }
         if ((0, general_controllers_1.isPostRequest)(request)) {
-            const requestData = request.body;
             return (0, general_controllers_1.operateWithPostRequest)(response, requestData, app_layout_models_1.default);
         }
         if ((0, general_controllers_1.isDeleteRequest)(request)) {
-            const requestId = request.body;
-            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, app_layout_models_1.default);
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestData, app_layout_models_1.default);
         }
         if ((0, general_controllers_1.isUpdateRequest)(request)) {
-            const requestData = request.body;
             const oldData = yield app_layout_models_1.default.find({ _id: requestData._id });
             const updatedData = {
                 layout_title_id: requestData.layout_title_id || oldData[0].layout_title_id,

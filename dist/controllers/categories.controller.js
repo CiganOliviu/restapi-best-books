@@ -17,19 +17,17 @@ const general_controllers_1 = require("../helpers/general.controllers");
 const categories_models_1 = __importDefault(require("../models/categories.models"));
 function operateOverCategoriesController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
+        const requestData = request.body;
         if ((0, general_controllers_1.isGetRequest)(request)) {
             return (0, general_controllers_1.operateWithGetRequest)(response, categories_models_1.default);
         }
         if ((0, general_controllers_1.isPostRequest)(request)) {
-            const requestData = request.body;
             return (0, general_controllers_1.operateWithPostRequest)(response, requestData, categories_models_1.default);
         }
         if ((0, general_controllers_1.isDeleteRequest)(request)) {
-            const requestId = request.body;
-            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, categories_models_1.default);
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestData, categories_models_1.default);
         }
         if ((0, general_controllers_1.isUpdateRequest)(request)) {
-            const requestData = request.body;
             const oldData = yield categories_models_1.default.find({ _id: requestData._id });
             const updatedData = {
                 name: requestData.name || oldData[0].name,

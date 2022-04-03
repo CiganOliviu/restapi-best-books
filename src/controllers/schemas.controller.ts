@@ -3,29 +3,26 @@ import { isDeleteRequest, isGetRequest, isPostRequest, isUpdateRequest, operateW
 import schemaModel from '../models/schemas.models';
 
 export async function operateOverSchemasController(request: Request, response: Response) {
-    
+    const requestData = request.body;
+
     if (isGetRequest(request)) {
         return operateWithGetRequest(response, schemaModel);
     }
 
     if (isPostRequest(request)) {
-        const requestData = request.body;
         return operateWithPostRequest(response, requestData, schemaModel);
     }
 
     if (isDeleteRequest(request)) {
-        const requestId = request.body;
-        return operateWithDeleteRequest(response, requestId, schemaModel);
+        return operateWithDeleteRequest(response, requestData, schemaModel);
     }
 
     if (isUpdateRequest(request)) {
-        const requestData = request.body;
         const oldData = await schemaModel.find({ _id: requestData._id });
         const updateData = {
             name: requestData.name || oldData[0].name,
             route: requestData.route || oldData[0].route,
         }
-
         return operateWithUpdateRequest(response, requestData, updateData, schemaModel);
     }
 

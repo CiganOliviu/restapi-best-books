@@ -17,19 +17,17 @@ const general_controllers_1 = require("../helpers/general.controllers");
 const style_components_models_1 = __importDefault(require("../models/style_components.models"));
 function operateOverStyledComponentsController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
+        const requestData = request.body;
         if ((0, general_controllers_1.isGetRequest)(request)) {
             return (0, general_controllers_1.operateWithGetRequest)(response, style_components_models_1.default);
         }
         if ((0, general_controllers_1.isPostRequest)(request)) {
-            const requestData = request.body;
             return (0, general_controllers_1.operateWithPostRequest)(response, requestData, style_components_models_1.default);
         }
         if ((0, general_controllers_1.isDeleteRequest)(request)) {
-            const requestId = request.body;
-            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, style_components_models_1.default);
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestData, style_components_models_1.default);
         }
         if ((0, general_controllers_1.isUpdateRequest)(request)) {
-            const requestData = request.body;
             const oldData = yield style_components_models_1.default.find({ _id: requestData._id });
             const updateData = {
                 app_theme: requestData.app_theme || oldData[0].app_theme,

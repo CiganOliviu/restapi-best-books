@@ -17,19 +17,17 @@ const books_models_1 = __importDefault(require("../models/books.models"));
 const general_controllers_1 = require("../helpers/general.controllers");
 function operateOverBooksController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
+        const requestData = request.body;
         if ((0, general_controllers_1.isGetRequest)(request)) {
             return (0, general_controllers_1.operateWithGetRequest)(response, books_models_1.default);
         }
         if ((0, general_controllers_1.isPostRequest)(request)) {
-            const requestData = request.body;
             return (0, general_controllers_1.operateWithPostRequest)(response, requestData, books_models_1.default);
         }
         if ((0, general_controllers_1.isDeleteRequest)(request)) {
-            const requestId = request.body;
-            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, books_models_1.default);
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestData, books_models_1.default);
         }
         if ((0, general_controllers_1.isUpdateRequest)(request)) {
-            const requestData = request.body;
             const oldData = yield books_models_1.default.find({ _id: requestData._id });
             const updatedData = {
                 author: requestData.author || oldData[0].author,

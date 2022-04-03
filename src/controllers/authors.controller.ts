@@ -5,23 +5,21 @@ import { isDeleteRequest, isGetRequest, isPostRequest,
     operateWithPostRequest, operateWithUpdateRequest } from '../helpers/general.controllers';
 
 export async function operateOverAuthorsController(request: Request, response: Response) {
+    const requestData = request.body;
 
     if (isGetRequest(request)) {
         return operateWithGetRequest(response, authorsModel);
     }
 
     if (isPostRequest(request)) {
-        const requestData = request.body;
         return operateWithPostRequest(response, requestData, authorsModel);
     } 
 
     if (isDeleteRequest(request)) {
-        const requestId = request.body;
-        return operateWithDeleteRequest(response, requestId, authorsModel);
+        return operateWithDeleteRequest(response, requestData, authorsModel);
     } 
     
     if (isUpdateRequest(request)) {
-        const requestData = request.body;
         const oldData = await authorsModel.find({ _id: requestData._id });   
         const updatedData = {
             profile_picture: requestData.profile_picture || oldData[0].profile_picture,
@@ -32,9 +30,8 @@ export async function operateOverAuthorsController(request: Request, response: R
             occupation: requestData.occupation || oldData[0].occupation,
             website: requestData.website || oldData[0].website,
         }
-
         return operateWithUpdateRequest(response, requestData, updatedData, authorsModel);
     }
-
+    
     return response.sendStatus(404);
 }

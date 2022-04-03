@@ -6,23 +6,21 @@ import { isDeleteRequest, isGetRequest, isPostRequest,
     operateWithUpdateRequest } from '../helpers/general.controllers';
 
 export async function operateOverBooksController(request: Request, response: Response) {
+    const requestData = request.body;
 
     if (isGetRequest(request)) {
         return operateWithGetRequest(response, booksModel);
     }
     
     if (isPostRequest(request)) {
-        const requestData = request.body;
         return operateWithPostRequest(response, requestData, booksModel);
     }
 
     if (isDeleteRequest(request)) {
-        const requestId = request.body;
-        return operateWithDeleteRequest(response, requestId, booksModel)
+        return operateWithDeleteRequest(response, requestData, booksModel)
     }
 
     if (isUpdateRequest(request)) {
-        const requestData = request.body;
         const oldData = await booksModel.find({ _id: requestData._id });
         const updatedData = {
             author: requestData.author || oldData[0].author,
@@ -35,7 +33,6 @@ export async function operateOverBooksController(request: Request, response: Res
             category: requestData.category || oldData[0].category,
             owned: requestData.owned || oldData[0].owned,
         }
-
         return operateWithUpdateRequest(response, requestData, updatedData, booksModel);
     }
 

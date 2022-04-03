@@ -17,19 +17,17 @@ const general_controllers_1 = require("../helpers/general.controllers");
 const schemas_models_1 = __importDefault(require("../models/schemas.models"));
 function operateOverSchemasController(request, response) {
     return __awaiter(this, void 0, void 0, function* () {
+        const requestData = request.body;
         if ((0, general_controllers_1.isGetRequest)(request)) {
             return (0, general_controllers_1.operateWithGetRequest)(response, schemas_models_1.default);
         }
         if ((0, general_controllers_1.isPostRequest)(request)) {
-            const requestData = request.body;
             return (0, general_controllers_1.operateWithPostRequest)(response, requestData, schemas_models_1.default);
         }
         if ((0, general_controllers_1.isDeleteRequest)(request)) {
-            const requestId = request.body;
-            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestId, schemas_models_1.default);
+            return (0, general_controllers_1.operateWithDeleteRequest)(response, requestData, schemas_models_1.default);
         }
         if ((0, general_controllers_1.isUpdateRequest)(request)) {
-            const requestData = request.body;
             const oldData = yield schemas_models_1.default.find({ _id: requestData._id });
             const updateData = {
                 name: requestData.name || oldData[0].name,
