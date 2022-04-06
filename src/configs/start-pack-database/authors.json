@@ -4,7 +4,7 @@
         "first_name": "Bob",
         "last_name": "Martin",
         "age": "69",
-        "nationality": "623edcbdd40af40020c2a5cb",
+        "nationality": "",
         "occupation": "Software Engineer",
         "website": "cleancoder.com"
     },
@@ -13,7 +13,7 @@
         "first_name": "Martin",
         "last_name": "Fowler",
         "age": "58",
-        "nationality": "623edd3cd40af40020c2a5db",
+        "nationality": "",
         "occupation": "Software Engineer",
         "website": "martinfowler.com"
     }
