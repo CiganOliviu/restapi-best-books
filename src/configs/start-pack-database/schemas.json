@@ -1,0 +1,26 @@
+[
+    {
+        "name": "App Layout",
+        "route": "app_layout/" 
+    },
+    {
+        "name": "Authors",
+        "route": "authors/" 
+    },
+    {
+        "name": "Books",
+        "route": "books/" 
+    },
+    {
+        "name": "Categories",
+        "route": "categories/" 
+    },
+    {
+        "name": "Nationalities",
+        "route": "nationalities/" 
+    },
+    {
+        "name": "Style Components",
+        "route": "style_components/" 
+    }
+]
